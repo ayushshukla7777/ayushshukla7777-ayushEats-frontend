@@ -35,8 +35,11 @@ const formSchema = z
     cuisines: z.array(z.string()).nonempty({
       message: "please select at least one item",
     }),
-    category: z.string({
-      required_error: "country is required",
+    category: z.object({
+      _id: z.string(),
+      name: z.string({
+        required_error: "category name is required",
+      }),
     }),
     menuItems: z.array(
       z.object({
