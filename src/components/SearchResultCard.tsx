@@ -43,6 +43,7 @@ const SearchResultCard = ({ restaurant }: Props) => {
             </div>
             <div className="flex items-center gap-1">
               <Banknote />
+              
               Category- {restaurant.category.name}
             </div>
           </div>

@@ -25,7 +25,10 @@ export type Restaurant = {
   menuItems: MenuItem[];
   imageUrl: string;
   lastUpdated: string;
-  category: string;
+  category: {
+    _id: string;
+    name: string;
+  };
 };
 
 export type OrderStatus =
