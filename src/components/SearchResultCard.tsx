@@ -41,6 +41,10 @@ const SearchResultCard = ({ restaurant }: Props) => {
               <Banknote />
               Delivery from £{(restaurant.deliveryPrice / 100).toFixed(2)}
             </div>
+            <div className="flex items-center gap-1">
+              <Banknote />
+              Category- {restaurant.category.name}
+            </div>
           </div>
         </div>
       </div>

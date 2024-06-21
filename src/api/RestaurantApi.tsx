@@ -37,6 +37,10 @@ export const useSearchRestaurants = (
     params.set("searchQuery", searchState.searchQuery);
     params.set("page", searchState.page.toString());
     params.set("selectedCuisines", searchState.selectedCuisines.join(","));
+    params.set(
+      "selectedCategories",
+      searchState.selectedCategories.join(",")
+    );
     params.set("sortOption", searchState.sortOption);
 
     const response = await fetch(

@@ -7,12 +7,14 @@ import SearchResultInfo from "@/components/SearchResultInfo";
 import SortOptionDropdown from "@/components/SortOptionDropdown";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import CategoryFilter from "@/components/CategoryFilter";
 
 export type SearchState = {
   searchQuery: string;
   page: number;
   selectedCuisines: string[];
   sortOption: string;
+  selectedCategories: string[];
 };
 
 const SearchPage = () => {
@@ -21,6 +23,7 @@ const SearchPage = () => {
     searchQuery: "",
     page: 1,
     selectedCuisines: [],
+    selectedCategories: [],
     sortOption: "bestMatch",
   });
 
@@ -40,6 +43,13 @@ const SearchPage = () => {
     setSearchState((prevState) => ({
       ...prevState,
       selectedCuisines,
+      page: 1,
+    }));
+  };
+  const setSelectedCategories = (selectedCategories: string[]) => {
+    setSearchState((prevState) => ({
+      ...prevState,
+      selectedCategories,
       page: 1,
     }));
   };
@@ -81,6 +91,14 @@ const SearchPage = () => {
         <CuisineFilter
           selectedCuisines={searchState.selectedCuisines}
           onChange={setSelectedCuisines}
+          isExpanded={isExpanded}
+          onExpandedClick={() =>
+            setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+          }
+        />
+        <CategoryFilter
+          selectedCategories={searchState.selectedCategories}
+          onChange={setSelectedCategories}
           isExpanded={isExpanded}
           onExpandedClick={() =>
             setIsExpanded((prevIsExpanded) => !prevIsExpanded)

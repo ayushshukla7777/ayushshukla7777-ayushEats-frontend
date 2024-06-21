@@ -87,6 +87,29 @@ const DetailsSection = () => {
           </FormItem>
         )}
       />
+      <FormField
+        control={control}
+        name="category"
+        render={({ field }) => (
+          <FormItem className="max-w-[25%]">
+            <FormLabel className="mr-4">Category</FormLabel>
+            <FormControl>
+              <select {...field} className="bg-white">
+                <option value="American">American</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Italian">Italian</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Indian">Indian</option>
+                <option value="Greek">Greek</option>
+                <option value="French">French</option>
+                <option value="Spanish">Spanish</option>
+              </select>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
     </div>
   );
 };

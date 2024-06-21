@@ -5,6 +5,7 @@ import { z } from "zod";
 import DetailsSection from "./DetailsSection";
 import { Separator } from "@/components/ui/separator";
 import CuisinesSection from "./CuisinesSection";
+// import CategorySelector from "./CategorySelector";
 import MenuSection from "./MenuSection";
 import ImageSection from "./ImageSection";
 import LoadingButton from "@/components/LoadingButton";
@@ -33,6 +34,9 @@ const formSchema = z
     }),
     cuisines: z.array(z.string()).nonempty({
       message: "please select at least one item",
+    }),
+    category: z.string({
+      required_error: "country is required",
     }),
     menuItems: z.array(
       z.object({
@@ -91,6 +95,7 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
 
   const onSubmit = (formDataJson: RestaurantFormData) => {
     const formData = new FormData();
+    console.log(formDataJson);
 
     formData.append("restaurantName", formDataJson.restaurantName);
     formData.append("city", formDataJson.city);
@@ -104,9 +109,14 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
       "estimatedDeliveryTime",
       formDataJson.estimatedDeliveryTime.toString()
     );
+
+
+    formData.append("category", formDataJson.category.toString());
+
     formDataJson.cuisines.forEach((cuisine, index) => {
       formData.append(`cuisines[${index}]`, cuisine);
     });
+
     formDataJson.menuItems.forEach((menuItem, index) => {
       formData.append(`menuItems[${index}][name]`, menuItem.name);
       formData.append(
@@ -130,6 +140,7 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
       >
         <DetailsSection />
         <Separator />
+        {/* <CategorySelector /> */}
         <CuisinesSection />
         <Separator />
         <MenuSection />

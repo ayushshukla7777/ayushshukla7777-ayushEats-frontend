@@ -25,6 +25,7 @@ export type Restaurant = {
   menuItems: MenuItem[];
   imageUrl: string;
   lastUpdated: string;
+  category: string;
 };
 
 export type OrderStatus =

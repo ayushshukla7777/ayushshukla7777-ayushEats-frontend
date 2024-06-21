@@ -26,3 +26,15 @@ export const cuisineList = [
   "Tapas",
   "Vegan",
 ];
+
+export const categoryList = [
+  "American",
+  "Japanese",
+  "Chinese",
+  "Italian",
+  "Mexican",
+  "Indian",
+  "Greek",
+  "French",
+  "Spanish",
+]
